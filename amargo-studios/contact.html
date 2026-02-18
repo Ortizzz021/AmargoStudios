@@ -1,81 +1,205 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Contáctenos - Amargo Studios</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacta a Amargo Studios para tu próximo proyecto audiovisual cinematográfico">
+    <title>Contacto - Amargo Studios</title>
 
-<header>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <img src="../assets/images/logo.png" alt="Logo Amargo Studios">
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="services.html">Servicios</a></li>
-            <li><a href="contact.html">Contáctenos</a></li>
-        </ul>
-    </nav>
-</header>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-<main>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 
-    <h1>Contáctanos</h1>
+<body>
 
-    <section>
-        <h2>Información de contacto</h2>
-        <p>Estamos disponibles para ayudarte a desarrollar tu próximo proyecto audiovisual.</p>
-        <ul>
-            <li>Email: contacto@amargostudios.com</li>
-            <li>Teléfono: +57 300 000 0000</li>
-            <li>Ubicación: Medellín, Colombia</li>
-        </ul>
-    </section>
+    <header id="header">
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="contact.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <section>
-        <h2>Formulario de contacto</h2>
-        <p>Completa el siguiente formulario y nos pondremos en contacto contigo.</p>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" style="min-height: 50vh;">
+            <img class="hero-background" src="../assets/images/contact-hero.jpg" alt="Contacto Amargo Studios">
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <p class="hero-subtitle">Hablemos</p>
+                <h1 class="hero-title">Comienza Tu Proyecto</h1>
+                <p class="hero-description">
+                    Estamos listos para transformar tu visión en una pieza audiovisual cinematográfica
+                </p>
+            </div>
+        </section>
 
-        <form>
-            <label for="nombre">Nombre:</label><br>
-            <input type="text" id="nombre" name="nombre" required><br><br>
+        <!-- CONTACT FORM -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Contáctanos</p>
+                <h2>Solicita una Cotización</h2>
+                <p>
+                    Cuéntanos sobre tu proyecto y nos pondremos en contacto contigo lo antes posible
+                </p>
+            </div>
 
-            <label for="email">Correo electrónico:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre Completo *</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
 
-            <label for="servicio">Servicio de interés:</label><br>
-            <select id="servicio" name="servicio">
-                <option>Producción de Video</option>
-                <option>Fotografía Profesional</option>
-                <option>Edición y Postproducción</option>
-            </select><br><br>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico *</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
 
-            <label for="mensaje">Mensaje:</label><br>
-            <textarea id="mensaje" name="mensaje" rows="4"></textarea><br><br>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+57 300 123 4567">
+                </div>
 
-            <button type="submit" class="btn">Enviar mensaje</button>
-        </form>
-    </section>
+                <div class="form-group">
+                    <label for="service">Servicio de Interés *</label>
+                    <select id="service" name="service" required
+                        style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: var(--color-text-primary); font-family: var(--font-primary); font-size: 1rem;">
+                        <option value="">Selecciona un servicio</option>
+                        <option value="produccion-video">Producción de Video</option>
+                        <option value="fotografia">Fotografía Profesional</option>
+                        <option value="redes-sociales">Contenido para Redes Sociales</option>
+                        <option value="proyectos-especiales">Proyectos Especiales</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
 
-    <section>
-        <h2>Síguenos</h2>
-        <p>También puedes conocer más sobre nuestro trabajo en nuestras redes sociales:</p>
-        <ul>
-            <li><a href="#">Instagram</a></li>
-            <li><a href="#">YouTube</a></li>
-            <li><a href="#">TikTok</a></li>
-        </ul>
-    </section>
+                <div class="form-group">
+                    <label for="budget">Presupuesto Estimado</label>
+                    <select id="budget" name="budget"
+                        style="width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: var(--color-text-primary); font-family: var(--font-primary); font-size: 1rem;">
+                        <option value="">Selecciona un rango</option>
+                        <option value="menos-1m">Menos de $1,000,000 COP</option>
+                        <option value="1m-3m">$1,000,000 - $3,000,000 COP</option>
+                        <option value="3m-5m">$3,000,000 - $5,000,000 COP</option>
+                        <option value="5m-10m">$5,000,000 - $10,000,000 COP</option>
+                        <option value="mas-10m">Más de $10,000,000 COP</option>
+                    </select>
+                </div>
 
-</main>
+                <div class="form-group">
+                    <label for="message">Cuéntanos sobre tu proyecto *</label>
+                    <textarea id="message" name="message" required
+                        placeholder="Describe tu visión, objetivos y cualquier detalle relevante..."></textarea>
+                </div>
 
-<footer>
-    <p>© 2026 Amargo Studios - Todos los derechos reservados</p>
-</footer>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- CONTACT INFO -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Información de Contacto</p>
+                <h2>Otras Formas de Contactarnos</h2>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>contacto@amargostudios.com</p>
+                    </div>
+                </div>
+
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-icon">📱</div>
+                        <h3>WhatsApp</h3>
+                        <p>+57 300 123 4567</p>
+                    </div>
+                </div>
+
+                <div class="card text-center">
+                    <div class="card-content">
+                        <div class="card-icon">📍</div>
+                        <h3>Ubicación</h3>
+                        <p>Medellín, Colombia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOCIAL MEDIA -->
+        <section class="container">
+            <div class="card text-center">
+                <div class="card-content">
+                    <h2 class="mb-md">Síguenos en Redes Sociales</h2>
+                    <p class="mb-lg">
+                        Descubre nuestro trabajo y mantente al día con nuestros últimos proyectos
+                    </p>
+                    <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="#" class="btn btn-outline">Instagram</a>
+                        <a href="#" class="btn btn-outline">Facebook</a>
+                        <a href="#" class="btn btn-outline">YouTube</a>
+                        <a href="#" class="btn btn-outline">TikTok</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Amargo Studios - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            // Here you would normally send the data to a server
+            console.log('Form data:', data);
+
+            // Show success message
+            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+
+            // Reset form
+            this.reset();
+        });
+    </script>
 
 </body>
+
 </html>

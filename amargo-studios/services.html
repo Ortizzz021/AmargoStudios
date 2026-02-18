@@ -1,70 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Servicios de producción audiovisual, fotografía y contenido para redes sociales - Amargo Studios">
     <title>Servicios - Amargo Studios</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
 
-<header>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <img src="../assets/images/logo.png" alt="Logo Amargo Studios">
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="services.html">Servicios</a></li>
-            <li><a href="contact.html">Contáctenos</a></li>
-        </ul>
-    </nav>
-</header>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-<main>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 
-    <h1>Nuestros Servicios</h1>
+<body>
 
-    <section>
-        <h2>Producción de Video</h2>
-        <p>Realizamos videos corporativos, comerciales y promocionales adaptados a la identidad de cada marca.</p>
-        <ul>
-            <li>Videos empresariales</li>
-            <li>Publicidad digital</li>
-            <li>Contenido para redes sociales</li>
-        </ul>
-        <img src="../assets/images/service1.jpg" alt="Producción de video">
-    </section>
+    <header id="header">
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="services.html" class="active">Servicios</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <section>
-        <h2>Fotografía Profesional</h2>
-        <p>Capturamos momentos y productos con calidad profesional para fortalecer la imagen de tu marca.</p>
-        <ul>
-            <li>Fotografía de eventos</li>
-            <li>Fotografía publicitaria</li>
-            <li>Fotografía de producto</li>
-        </ul>
-        <img src="../assets/images/service2.jpg" alt="Fotografía profesional">
-    </section>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" style="min-height: 60vh;">
+            <img class="hero-background" src="../assets/images/services-hero.jpg" alt="Servicios Amargo Studios">
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <p class="hero-subtitle">Nuestros Servicios</p>
+                <h1 class="hero-title">Soluciones Audiovisuales Integrales</h1>
+                <p class="hero-description">
+                    Desde la preproducción hasta la entrega final, ofrecemos servicios completos
+                    con enfoque cinematográfico.
+                </p>
+            </div>
+        </section>
 
-    <section>
-        <h2>Edición y Postproducción</h2>
-        <p>Nos encargamos de dar vida a cada proyecto a través de una edición detallada y profesional.</p>
-        <ul>
-            <li>Corrección de color</li>
-            <li>Animación básica</li>
-            <li>Diseño de sonido</li>
-        </ul>
-        <img src="../assets/images/service3.jpg" alt="Edición de video">
-        <p>¿Interesado en alguno de nuestros servicios? <a href="contact.html">Contáctanos aquí</a>.</p>
-    </section>
+        <!-- PRODUCCION DE VIDEO -->
+        <section class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="section-subtitle">Servicio Principal</p>
+                    <h2>🎬 Producción de Video</h2>
+                    <p>
+                        Desde la preproducción hasta la postproducción, manejamos cada etapa del proceso
+                        con profesionalismo y visión cinematográfica.
+                    </p>
+                    <div class="card mt-md">
+                        <div class="card-content">
+                            <h3 class="mb-sm">Incluye:</h3>
+                            <ul>
+                                <li><strong>Preproducción:</strong> Desarrollo de guion y planificación detallada</li>
+                                <li><strong>Filmación:</strong> Captura profesional con equipo cinematográfico</li>
+                                <li><strong>Edición:</strong> Montaje narrativo y creativo</li>
+                                <li><strong>Colorización:</strong> Corrección y gradación de color profesional</li>
+                                <li><strong>Diseño Sonoro:</strong> Mezcla, masterización y efectos de audio</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/video-production.jpg" alt="Producción de video">
+                </div>
+            </div>
+        </section>
 
-</main>
+        <!-- FOTOGRAFIA -->
+        <section class="container">
+            <div class="about-content">
+                <div class="media-container">
+                    <img src="../assets/images/photography.jpg" alt="Fotografía profesional">
+                </div>
+                <div class="about-text">
+                    <p class="section-subtitle">Captura Visual</p>
+                    <h2>📸 Fotografía Profesional</h2>
+                    <p>
+                        Sesiones fotográficas profesionales para marcas, productos y contenido de redes sociales,
+                        siempre con un toque cinematográfico que eleva cada imagen.
+                    </p>
+                    <div class="card mt-md">
+                        <div class="card-content">
+                            <h3 class="mb-sm">Especialidades:</h3>
+                            <ul>
+                                <li><strong>Fotografía de Marca:</strong> Imágenes que reflejan la identidad de tu
+                                    negocio</li>
+                                <li><strong>Fotografía de Producto:</strong> Destacamos lo mejor de tus productos</li>
+                                <li><strong>Contenido para Redes:</strong> Fotografías optimizadas para plataformas
+                                    digitales</li>
+                                <li><strong>Sesiones Corporativas:</strong> Retratos profesionales y fotografía de
+                                    equipo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<footer>
-    <p>© 2026 Amargo Studios - Todos los derechos reservados</p>
-</footer>
+        <!-- CONTENIDO PARA REDES SOCIALES -->
+        <section class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="section-subtitle">Marketing Digital</p>
+                    <h2>📱 Contenido para Redes Sociales</h2>
+                    <p>
+                        Creación de videos cortos, reels y piezas visuales que resaltan en plataformas digitales,
+                        manteniendo siempre una narrativa cinematográfica que captura la atención.
+                    </p>
+                    <div class="card mt-md">
+                        <div class="card-content">
+                            <h3 class="mb-sm">Formatos:</h3>
+                            <ul>
+                                <li><strong>Reels Cinematográficos:</strong> Videos cortos con impacto visual</li>
+                                <li><strong>Stories Dinámicos:</strong> Contenido vertical optimizado</li>
+                                <li><strong>Videos para Feed:</strong> Piezas narrativas para publicaciones</li>
+                                <li><strong>Contenido TikTok:</strong> Videos virales con calidad premium</li>
+                                <li><strong>Campañas Publicitarias:</strong> Contenido estratégico para ads</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/social-media.jpg" alt="Contenido para redes sociales">
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECTOS ESPECIALES -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Creatividad Sin Límites</p>
+                <h2>✨ Proyectos Especiales</h2>
+                <p>
+                    Desarrollo de teasers, miniseries y cualquier formato audiovisual creativo que requiera
+                    un enfoque único y cinematográfico.
+                </p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Teasers y Trailers</h3>
+                        <p>
+                            Piezas promocionales cinematográficas que generan expectativa y emoción.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Miniseries</h3>
+                        <p>
+                            Contenido episódico con narrativa visual y producción de alta calidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Proyectos Creativos</h3>
+                        <p>
+                            Formatos audiovisuales únicos adaptados a tu visión creativa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESO DE TRABAJO -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestro Método</p>
+                <h2>Proceso de Trabajo</h2>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Consulta Inicial</h3>
+                        <p>
+                            Entendemos tu visión, objetivos y necesidades específicas del proyecto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Desarrollo Creativo</h3>
+                        <p>
+                            Creamos un concepto cinematográfico adaptado a tu marca e identidad.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Producción</h3>
+                        <p>
+                            Ejecutamos con profesionalismo, cuidando cada detalle técnico y creativo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Entrega Final</h3>
+                        <p>
+                            Postproducción completa y entrega en los formatos que necesites.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="container">
+            <div class="card text-center">
+                <div class="card-content">
+                    <h2 class="mb-md">¿Interesado en Alguno de Nuestros Servicios?</h2>
+                    <p class="mb-lg">
+                        Contáctanos para discutir tu proyecto y recibir una cotización personalizada.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Solicitar Cotización</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Amargo Studios - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
+
 </html>

@@ -1,59 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Amargo Studios - Inicio</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Amargo Studios - Productora audiovisual que transforma ideas en piezas cinematográficas únicas">
+    <title>Amargo Studios - Productora Audiovisual Cinematográfica</title>
 
-<header>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <img src="../assets/images/logo.png" alt="Logo Amargo Studios">
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="services.html">Servicios</a></li>
-            <li><a href="contact.html">Contáctenos</a></li>
-        </ul>
-    </nav>
-</header>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-<main>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 
-    <h1>Amargo Studios</h1>
+<body>
 
-    <section>
-        <h2>Transformamos ideas en experiencias audiovisuales</h2>
-        <p>En Amargo Studios nos especializamos en la producción audiovisual profesional para marcas, eventos y creadores de contenido.</p>
-        <img src="../assets/images/hero.jpg" alt="Producción audiovisual">
-    </section>
+    <header id="header">
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <section>
-        <h2>¿Qué hacemos?</h2>
-        <ul>
-            <li>Producción de videos corporativos</li>
-            <li>Cobertura de eventos</li>
-            <li>Fotografía profesional</li>
-            <li>Edición y postproducción</li>
-        </ul>
-        <p>Nuestro equipo combina creatividad, técnica y tecnología para lograr resultados de alto impacto.</p>
-    </section>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <video class="hero-background" autoplay muted loop playsinline>
+                <source src="../assets/videos/hero-background.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <p class="hero-subtitle">Productora Audiovisual</p>
+                <h1 class="hero-title">Transformamos Ideas en Cine</h1>
+                <p class="hero-description">
+                    Cada proyecto es una pequeña película. Creamos piezas audiovisuales con alma cinematográfica,
+                    cuidando cada detalle para que cada frame cuente una historia.
+                </p>
+                <a href="contact.html" class="btn btn-primary">Comienza tu Proyecto</a>
+            </div>
+        </section>
 
-    <section>
-        <h2>Trabaja con nosotros</h2>
-        <p>Si buscas calidad visual y narrativa profesional, estamos listos para hacer realidad tu proyecto.</p>
-        <a href="contact.html" class="btn">Solicitar cotización</a>
-    </section>
+        <!-- INTRO SECTION -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Quiénes Somos</p>
+                <h2>Una Productora con Visión Cinematográfica</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Amargo Studios es una productora audiovisual joven y dinámica, formada por un equipo de
+                        apasionados por el cine y la creación visual.
+                    </p>
+                    <p>
+                        Nos especializamos en transformar ideas en piezas audiovisuales con un estilo cinematográfico
+                        único, cuidando cada detalle para que cada proyecto se sienta como una pequeña película.
+                    </p>
+                    <p>
+                        No buscamos solo producir contenido, sino elevarlo a un nivel donde cada frame tenga
+                        intención cinematográfica.
+                    </p>
+                    <a href="about.html" class="btn btn-outline mt-md">Conoce Más Sobre Nosotros</a>
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/team-working.jpg" alt="Equipo de Amargo Studios trabajando">
+                </div>
+            </div>
+        </section>
 
-</main>
+        <!-- SERVICES PREVIEW -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestros Servicios</p>
+                <h2>Soluciones Audiovisuales Integrales</h2>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">🎬</div>
+                        <h3>Producción de Video</h3>
+                        <p>
+                            Desde la preproducción hasta la postproducción. Guion, planificación, filmación,
+                            edición, colorización y diseño sonoro.
+                        </p>
+                    </div>
+                </div>
 
-<footer>
-    <p>© 2026 Amargo Studios - Todos los derechos reservados</p>
-</footer>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">📸</div>
+                        <h3>Fotografía Profesional</h3>
+                        <p>
+                            Sesiones fotográficas profesionales para marcas, productos y contenido de redes sociales
+                            con estilo cinematográfico.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">📱</div>
+                        <h3>Contenido para Redes</h3>
+                        <p>
+                            Videos cortos, reels y piezas visuales que resaltan en plataformas digitales con
+                            narrativa cinematográfica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-lg">
+                <a href="services.html" class="btn btn-primary">Ver Todos los Servicios</a>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO PREVIEW -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestro Trabajo</p>
+                <h2>Cada Proyecto es una Obra de Arte Visual</h2>
+            </div>
+            <div class="grid grid-2">
+                <div class="media-container">
+                    <img src="../assets/images/portfolio-1.jpg" alt="Proyecto audiovisual 1">
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/portfolio-2.jpg" alt="Proyecto audiovisual 2">
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/portfolio-3.jpg" alt="Proyecto audiovisual 3">
+                </div>
+                <div class="media-container">
+                    <img src="../assets/images/portfolio-4.jpg" alt="Proyecto audiovisual 4">
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="container">
+            <div class="card text-center">
+                <div class="card-content">
+                    <h2 class="mb-md">¿Listo para Crear Algo Extraordinario?</h2>
+                    <p class="mb-lg">
+                        Transformemos tu visión en una pieza audiovisual cinematográfica que cuente tu historia
+                        de manera única y profesional.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Solicitar Cotización</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Amargo Studios - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
+
 </html>

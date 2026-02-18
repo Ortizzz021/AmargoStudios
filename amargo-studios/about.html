@@ -1,58 +1,225 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conoce a Amargo Studios - Productora audiovisual joven y dinámica con visión cinematográfica">
     <title>Sobre Nosotros - Amargo Studios</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-</head>
-<body>
 
-<header>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <img src="../assets/images/logo.png" alt="Logo Amargo Studios">
-    <nav>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Sobre Nosotros</a></li>
-            <li><a href="services.html">Servicios</a></li>
-            <li><a href="contact.html">Contáctenos</a></li>
-        </ul>
-    </nav>
-</header>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
 
-<main>
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
 
-    <h1>Sobre Amargo Studios</h1>
+<body>
 
-    <section>
-        <h2>Nuestra Historia</h2>
-        <p>Amargo Studios nació con la visión de ofrecer soluciones audiovisuales creativas y profesionales.</p>
-        <img src="assets/images/service1.jpg" alt="Equipo de producción">
-    </section>
+    <header id="header">
+        <div class="header-container">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="about.html" class="active">Nosotros</a></li>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <section>
-        <h2>Misión y Visión</h2>
-        <p><strong>Misión:</strong> Crear contenido audiovisual que conecte marcas con sus audiencias.</p>
-        <p><strong>Visión:</strong> Ser una productora reconocida a nivel nacional por su innovación y calidad.</p>
-    </section>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" style="min-height: 60vh;">
+            <img class="hero-background" src="../assets/images/about-hero.jpg" alt="Equipo Amargo Studios">
+            <div class="hero-overlay"></div>
+            <div class="hero-content fade-in-up">
+                <p class="hero-subtitle">Nuestra Historia</p>
+                <h1 class="hero-title">Pasión por el Cine y la Creación Visual</h1>
+            </div>
+        </section>
 
-    <section>
-        <h2>Valores</h2>
-        <ul>
-            <li>Creatividad</li>
-            <li>Responsabilidad</li>
-            <li>Innovación</li>
-            <li>Compromiso con el cliente</li>
-        </ul>
-    </section>
+        <!-- QUIENES SOMOS -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Quiénes Somos</p>
+                <h2>Una Productora Joven y Dinámica</h2>
+            </div>
+            <div class="about-content">
+                <div class="media-container">
+                    <img src="../assets/images/team-photo.jpg" alt="Equipo de Amargo Studios">
+                </div>
+                <div class="about-text">
+                    <p>
+                        Amargo Studios es una productora audiovisual joven y dinámica, formada por un equipo de
+                        apasionados por el cine y la creación visual.
+                    </p>
+                    <p>
+                        Nos especializamos en transformar ideas en piezas audiovisuales con un estilo cinematográfico
+                        único, cuidando cada detalle para que cada proyecto se sienta como una pequeña película.
+                    </p>
+                    <p>
+                        Más que acumular clientes, nos dedicamos a crear piezas audiovisuales con alma cinematográfica.
+                        Queremos ser reconocidos no solo por la cantidad de proyectos, sino por la calidad y la
+                        narrativa visual de cada uno de ellos.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-</main>
+        <!-- VISION Y MISION -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestro Propósito</p>
+                <h2>Visión y Misión</h2>
+            </div>
+            <div class="vision-mission">
+                <div class="vision-card">
+                    <h3 class="mb-md">Nuestra Visión</h3>
+                    <p>
+                        Nuestra visión es simple pero ambiciosa: queremos ser un estudio que transforma cualquier
+                        proyecto, desde un reel hasta un cortometraje, en una pieza de cine en miniatura.
+                    </p>
+                    <p>
+                        No buscamos solo producir contenido, sino elevarlo a un nivel donde cada frame tenga
+                        intención cinematográfica. En otras palabras, nos vemos como una productora que convierte
+                        cada encargo en una pequeña obra de arte visual.
+                    </p>
+                </div>
 
-<footer>
-    <p>© 2026 Amargo Studios - Todos los derechos reservados</p>
-</footer>
+                <div class="mission-card">
+                    <h3 class="mb-md">Nuestra Misión</h3>
+                    <p>
+                        Nuestra misión es ofrecer soluciones audiovisuales integrales, accesibles y de alta calidad,
+                        adaptándonos a las necesidades de cada proyecto y construyendo relaciones duraderas con
+                        nuestros clientes.
+                    </p>
+                    <p>
+                        Nos esforzamos por que cada producción sea un reflejo de la identidad de la marca, con un
+                        toque de originalidad y profesionalismo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROYECCION A CORTO PLAZO -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestro Futuro</p>
+                <h2>Proyección a Corto Plazo</h2>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <p class="mb-md">
+                        Nos proyectamos como una productora establecida que, más que acumular clientes, se dedica
+                        a crear piezas audiovisuales con alma cinematográfica.
+                    </p>
+                    <p class="mb-md">
+                        En uno o dos años, nos imaginamos siendo reconocidos no solo por la cantidad de proyectos,
+                        sino por la calidad y la narrativa visual de cada uno de ellos, logrando que incluso los
+                        videos más cortos cuenten una historia con un enfoque de cine.
+                    </p>
+                    <div class="grid grid-3 mt-lg">
+                        <div>
+                            <h3 class="text-gradient">Calidad</h3>
+                            <p>Cada proyecto con estándares cinematográficos</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gradient">Narrativa</h3>
+                            <p>Historias visuales que conectan y emocionan</p>
+                        </div>
+                        <div>
+                            <h3 class="text-gradient">Reconocimiento</h3>
+                            <p>Ser referentes en producción cinematográfica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VALORES -->
+        <section class="container">
+            <div class="section-header">
+                <p class="section-subtitle">Nuestros Valores</p>
+                <h2>Lo Que Nos Define</h2>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Creatividad Cinematográfica</h3>
+                        <p>
+                            Cada proyecto es una oportunidad para innovar y crear algo único con enfoque de cine.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Calidad Premium</h3>
+                        <p>
+                            No comprometemos la calidad. Cada detalle importa en la creación de piezas audiovisuales.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Compromiso con el Cliente</h3>
+                        <p>
+                            Construimos relaciones duraderas, adaptándonos a las necesidades de cada proyecto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Profesionalismo</h3>
+                        <p>
+                            Soluciones integrales y accesibles con el más alto nivel de profesionalismo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="container">
+            <div class="card text-center">
+                <div class="card-content">
+                    <h2 class="mb-md">¿Quieres Trabajar con Nosotros?</h2>
+                    <p class="mb-lg">
+                        Estamos listos para transformar tu visión en una pieza audiovisual cinematográfica única.
+                    </p>
+                    <a href="contact.html" class="btn btn-primary">Contáctanos</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Amargo Studios - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 
 </body>
+
 </html>
