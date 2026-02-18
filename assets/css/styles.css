@@ -121,7 +121,7 @@ header.scrolled {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
@@ -418,6 +418,20 @@ section {
 .about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.about-content-index {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.about-content-about {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
     gap: var(--spacing-lg);
     align-items: center;
 }
