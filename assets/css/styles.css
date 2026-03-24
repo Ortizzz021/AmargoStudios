@@ -444,6 +444,74 @@ section {
     margin-bottom: var(--spacing-sm);
 }
 
+/* ABOUT INTRO */
+.about-intro {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-intro p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* TEAM CARDS */
+.team-card {
+    background: var(--color-bg-card);
+    border: 1px solid rgba(242, 242, 242, 0.05);
+    border-radius: 16px;
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    border-color: rgba(2, 89, 57, 0.4);
+}
+
+.team-img-container {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--color-accent-primary);
+}
+
+.team-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-img-container img {
+    transform: scale(1.1);
+}
+
+.team-info h3 {
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.team-role {
+    color: var(--color-accent-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-sm) !important;
+}
+
+.team-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
 /* VISION & MISSION */
 .vision-mission {
     display: grid;
