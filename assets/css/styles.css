@@ -569,7 +569,8 @@ section {
 }
 
 .form-group input,
-.form-group textarea {
+.form-group textarea,
+.form-group select {
     width: 100%;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
@@ -582,10 +583,17 @@ section {
 }
 
 .form-group input:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--color-accent-primary);
     background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group select option {
+    background: #262626;
+    color: #F2F2F2;
+    padding: 0.5rem;
 }
 
 .form-group textarea {
