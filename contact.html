@@ -22,7 +22,10 @@
 
     <header id="header">
         <div class="header-container">
-            <nav>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span><span></span><span></span>
+            </button>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="about.html">Nosotros</a></li>
@@ -180,6 +183,14 @@
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
 
         // Form submission

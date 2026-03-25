@@ -637,10 +637,45 @@ footer {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
+/* HAMBURGER MENU TOGGLE */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--color-text-primary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
 /* RESPONSIVE */
 @media (max-width: 968px) {
 
     .about-content,
+    .about-content-index,
+    .about-content-about,
     .vision-mission {
         grid-template-columns: 1fr;
     }
@@ -661,21 +696,84 @@ footer {
         --spacing-xl: 2.5rem;
     }
 
+    /* Header & Mobile Nav */
     header {
         padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .header-container {
+        justify-content: flex-end;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(13, 13, 13, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+    }
+
+    nav.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-lg);
+    }
+
+    nav a {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    /* Main content */
+    main {
+        padding-top: 70px;
     }
 
     .logo {
         height: 55px;
     }
 
-    nav ul {
-        flex-wrap: wrap;
-        gap: var(--spacing-xs);
+    /* Hero */
+    .hero {
+        min-height: 50vh;
     }
 
-    nav a {
-        font-size: 0.9rem;
+    /* Team images */
+    .team-img-container {
+        height: 220px;
+    }
+
+    /* Contact form */
+    .contact-form {
+        padding: var(--spacing-md);
+    }
+
+    /* Cards - disable translateY hover on mobile */
+    .card:hover {
+        transform: none;
+    }
+
+    .team-card:hover {
+        transform: none;
     }
 }
 
