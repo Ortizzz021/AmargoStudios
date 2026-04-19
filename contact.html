@@ -16,6 +16,9 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="../assets/css/styles.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -38,10 +41,10 @@
 
     <main>
         <!-- HERO SECTION -->
-        <section class="hero" style="min-height: 50vh;">
-            <video class="hero-background" autoplay muted loop playsinline>
-                <source src="../assets/videos/contact-hero.mp4" type="video/mp4">
-            </video>
+        <section class="hero">
+            <iframe class="hero-background-yt"
+                src="https://www.youtube.com/embed/CWZo5vesqSI?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&playlist=CWZo5vesqSI&playsinline=1&disablekb=1&modestbranding=1"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <div class="hero-overlay"></div>
             <div class="hero-content fade-in-up">
                 <p class="hero-subtitle">Hablemos</p>
@@ -60,6 +63,19 @@
                 <p>
                     Cuéntanos sobre tu proyecto y nos pondremos en contacto contigo lo antes posible
                 </p>
+            </div>
+
+            <!-- Form Messages -->
+            <div class="contact-form" style="border: none; background: none; padding: 0; margin-bottom: 0;">
+                <div class="form-message success" id="successMessage">
+                    <span class="message-icon">✅</span>
+                    <span>¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.</span>
+                </div>
+                <div class="form-message error" id="errorMessage">
+                    <span class="message-icon">❌</span>
+                    <span>Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo o contáctanos directamente por
+                        email.</span>
+                </div>
             </div>
 
             <form class="contact-form" id="contactForm">
@@ -82,23 +98,11 @@
                     <label for="service">Servicio de Interés *</label>
                     <select id="service" name="service" required>
                         <option value="">Selecciona un servicio</option>
-                        <option value="produccion-video">Producción de Video</option>
-                        <option value="fotografia">Fotografía Profesional</option>
-                        <option value="redes-sociales">Contenido para Redes Sociales</option>
-                        <option value="proyectos-especiales">Proyectos Especiales</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Presupuesto Estimado</label>
-                    <select id="budget" name="budget">
-                        <option value="">Selecciona un rango</option>
-                        <option value="menos-1m">Menos de $1,000,000 COP</option>
-                        <option value="1m-3m">$1,000,000 - $3,000,000 COP</option>
-                        <option value="3m-5m">$3,000,000 - $5,000,000 COP</option>
-                        <option value="5m-10m">$5,000,000 - $10,000,000 COP</option>
-                        <option value="mas-10m">Más de $10,000,000 COP</option>
+                        <option value="Producción de Video">Producción de Video</option>
+                        <option value="Fotografía Profesional">Fotografía Profesional</option>
+                        <option value="Contenido para Redes Sociales">Contenido para Redes Sociales</option>
+                        <option value="Proyectos Especiales">Proyectos Especiales</option>
+                        <option value="Otro">Otro</option>
                     </select>
                 </div>
 
@@ -108,8 +112,18 @@
                         placeholder="Describe tu visión, objetivos y cualquier detalle relevante..."></textarea>
                 </div>
 
+                <!-- Consent Checkbox -->
+                <div class="consent-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">
+                        He leído y acepto la
+                        <a href="privacy.html" target="_blank">Política de Tratamiento de Datos Personales</a>.
+                        Autorizo a Amargo Studios para el tratamiento de mis datos conforme a la Ley 1581 de 2012.
+                    </label>
+                </div>
+
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Enviar Solicitud</button>
                 </div>
             </form>
         </section>
@@ -176,7 +190,20 @@
     </footer>
 
     <script>
-        // Header scroll effect
+        // =============================================
+        // EMAILJS INITIALIZATION
+        // =============================================
+        // IMPORTANTE: Reemplaza 'YOUR_PUBLIC_KEY' con tu Public Key de EmailJS
+        // La encuentras en: emailjs.com > Account > API Keys
+        (function () {
+            emailjs.init({
+                publicKey: "YOUR_PUBLIC_KEY",
+            });
+        })();
+
+        // =============================================
+        // HEADER SCROLL EFFECT
+        // =============================================
         window.addEventListener('scroll', () => {
             const header = document.getElementById('header');
             if (window.scrollY > 50) {
@@ -186,7 +213,9 @@
             }
         });
 
-        // Mobile menu toggle
+        // =============================================
+        // MOBILE MENU TOGGLE
+        // =============================================
         const menuToggle = document.getElementById('menuToggle');
         const mainNav = document.getElementById('mainNav');
         menuToggle.addEventListener('click', () => {
@@ -194,22 +223,62 @@
             mainNav.classList.toggle('active');
         });
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
+        // =============================================
+        // FORM SUBMISSION WITH EMAILJS
+        // =============================================
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Hide messages helper
+        function hideMessages() {
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+        }
+
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            // Hide any previous messages
+            hideMessages();
 
-            // Here you would normally send the data to a server
-            console.log('Form data:', data);
+            // Check consent
+            const consentCheckbox = document.getElementById('consent');
+            if (!consentCheckbox.checked) {
+                errorMessage.querySelector('span:last-child').textContent =
+                    'Debes aceptar la Política de Tratamiento de Datos Personales para enviar tu solicitud.';
+                errorMessage.classList.add('show');
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
 
-            // Show success message
-            alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.');
+            // Show loading state
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Enviando';
 
-            // Reset form
-            this.reset();
+            // IMPORTANTE: Reemplaza 'YOUR_SERVICE_ID' y 'YOUR_TEMPLATE_ID' con tus IDs de EmailJS
+            // Service ID: emailjs.com > Email Services > (tu servicio) > Service ID
+            // Template ID: emailjs.com > Email Templates > (tu template) > Template ID
+            emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+                .then(() => {
+                    // Success
+                    successMessage.classList.add('show');
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    contactForm.reset();
+                }, (error) => {
+                    // Error
+                    console.error('EmailJS Error:', error);
+                    errorMessage.querySelector('span:last-child').textContent =
+                        'Hubo un error al enviar tu mensaje. Por favor, intenta de nuevo o contáctanos directamente por email.';
+                    errorMessage.classList.add('show');
+                    errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .finally(() => {
+                    // Reset button
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Enviar Solicitud';
+                });
         });
     </script>
 
