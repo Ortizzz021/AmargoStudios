@@ -37,6 +37,10 @@ export default function Navbar() {
   return (
     <header id="header" className={scrolled ? 'scrolled' : ''}>
       <div className="header-container">
+        <Link href="/" className="nav-logo">
+          <img src="/images/logo.png" alt="Amargo Studios" className="nav-logo-img" />
+          <span className="nav-logo-text">Amargo <span>Studios</span></span>
+        </Link>
         <button
           className={`menu-toggle ${menuOpen ? 'active' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
