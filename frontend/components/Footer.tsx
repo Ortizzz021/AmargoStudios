@@ -5,47 +5,31 @@ export default function Footer() {
     <footer>
       <div className="footer-content">
         <div className="footer-top">
-          <div className="footer-brand">
-            <Link href="/" className="nav-logo">
-              <img src="/images/logo.png" alt="Amargo Studios" className="nav-logo-img" />
-              <span className="nav-logo-text">Amargo <span>Studios</span></span>
-            </Link>
-            <p className="mt-sm">
-              Productora audiovisual de alta gama especializada en cinematografía, fotografía profesional y gestión de redes sociales.
-            </p>
+          <div className="footer-col">
+            <h4>Amargo Studios</h4>
+            <p>Productora audiovisual de alta gama.</p>
           </div>
           
           <div className="footer-col">
-            <h4>Explora</h4>
+            <h4>Enlaces</h4>
             <ul>
               <li><Link href="/">Inicio</Link></li>
-              <li><Link href="/nosotros">Nosotros</Link></li>
               <li><Link href="/servicios">Servicios</Link></li>
               <li><Link href="/contacto">Contacto</Link></li>
             </ul>
           </div>
 
           <div className="footer-col">
-            <h4>Servicios</h4>
-            <ul>
-              <li><Link href="/servicios#video">Producción de Video</Link></li>
-              <li><Link href="/servicios#photo">Fotografía Profesional</Link></li>
-              <li><Link href="/servicios#social">Redes Sociales</Link></li>
-            </ul>
-          </div>
-
-          <div className="footer-col">
             <h4>Contacto</h4>
             <ul>
-              <li>info@amargostudios.com</li>
-              <li>+57 300 123 4567</li>
-              <li>Medellín, Colombia</li>
+              <li><a href="mailto:amargostudios@gmail.com">amargostudios@gmail.com</a></li>
+              <li><a href="https://wa.me/573166123634" target="_blank" rel="noopener noreferrer">+57 316 612 3634</a></li>
             </ul>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Amargo Studios. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Amargo Studios.</p>
         </div>
       </div>
     </footer>

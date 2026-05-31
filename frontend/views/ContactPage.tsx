@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import HeroVideo from '@/components/HeroVideo';
 import AnimateOnScroll from '@/components/ScrollAnimations';
 import { FormFieldInput, FormFieldSelect, FormFieldTextarea } from '@/components/FormField';
+import PrivacyModal from '@/components/PrivacyModal';
 import { contactService, getErrorMessage } from '@/services/contactService';
 import { YOUTUBE_VIDEOS } from '@/lib/utils';
 
@@ -40,6 +41,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [privacyModalOpen, setPrivacyModalOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
@@ -170,9 +172,13 @@ export default function ContactPage() {
               />
               <label htmlFor="consent">
                 He leído y acepto la{' '}
-                <Link href="/privacidad" target="_blank">
+                <button
+                  type="button"
+                  onClick={() => setPrivacyModalOpen(true)}
+                  style={{ background: 'none', border: 'none', color: 'var(--color-accent-primary)', cursor: 'pointer', textDecoration: 'underline' }}
+                >
                   Política de Tratamiento de Datos Personales
-                </Link>
+                </button>
                 . Autorizo a Amargo Studios para el tratamiento de mis datos conforme a la Ley 1581 de 2012.
               </label>
             </div>
@@ -254,6 +260,8 @@ export default function ContactPage() {
           </div>
         </AnimateOnScroll>
       </section>
+
+      <PrivacyModal isOpen={privacyModalOpen} onClose={() => setPrivacyModalOpen(false)} />
     </>
   );
 }

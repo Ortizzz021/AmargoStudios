@@ -50,25 +50,6 @@ export default function HomePage() {
       </section>
 
       <section className="container">
-        <AnimateOnScroll delay={100}>
-          <div className="stats-section">
-            <div className="stat-item">
-              <div className="stat-number">50+</div>
-              <div className="stat-label">Proyectos Completados</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">15+</div>
-              <div className="stat-label">Premios & Reconocimientos</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-number">100%</div>
-              <div className="stat-label">Clientes Satisfechos</div>
-            </div>
-          </div>
-        </AnimateOnScroll>
-      </section>
-
-      <section className="container">
         <AnimateOnScroll>
           <div className="section-header text-center">
             <p className="section-subtitle">Nuestros Servicios</p>

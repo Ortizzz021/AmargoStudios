@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { cotizacionService, type CotizacionFilters } from '@/services/cotizacionService';
 import { getErrorMessage } from '@/services/api';
 import type {
@@ -15,24 +15,29 @@ export function useCotizaciones(initialFilters: CotizacionFilters = {}) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<CotizacionFilters>(initialFilters);
+  const filtersRef = useRef<CotizacionFilters>(initialFilters);
+
+  useEffect(() => {
+    filtersRef.current = filters;
+  }, [filters]);
 
   const fetchCotizaciones = useCallback(async (override?: CotizacionFilters) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const merged = { ...filters, ...override };
-      const result = await cotizacionService.getAll(merged);
-      setData(result);
-      setFilters(merged);
-      return result;
-    } catch (err) {
-      const message = getErrorMessage(err);
-      setError(message);
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
-  }, [filters]);
+  setIsLoading(true);
+  setError(null);
+  try {
+    const merged = { ...filtersRef.current, ...override };
+    const result = await cotizacionService.getAll(merged);
+    setData(result);
+    setFilters(merged);
+    return result;
+  } catch (err) {
+    const message = getErrorMessage(err);
+    setError(message);
+    throw err;
+  } finally {
+    setIsLoading(false);
+  }
+}, []);
 
   const getCotizacion = useCallback(async (id: string) => {
     return cotizacionService.getById(id);

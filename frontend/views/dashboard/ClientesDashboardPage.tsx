@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useClientes } from '@/hooks/useClientes';
 import Modal from '@/components/Modal';
@@ -23,10 +23,14 @@ export default function ClientesDashboardPage() {
   const [form, setForm] = useState(emptyForm);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [isSaving, setIsSaving] = useState(false);
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    void fetchClientes({ page: 1, limit: 10 });
-  }, [fetchClientes]);
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      void fetchClientes({ page: 1, limit: 10 });
+    }
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
