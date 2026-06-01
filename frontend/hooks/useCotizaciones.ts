@@ -11,7 +11,7 @@ import type {
 } from '@/types';
 
 export function useCotizaciones(initialFilters: CotizacionFilters = {}) {
-  const [data, setData] = useState<PaginatedResponse<Cotizacion> | null>(null);
+  const [cotizaciones, setCotizaciones] = useState<PaginatedResponse<Cotizacion> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<CotizacionFilters>(initialFilters);
@@ -27,7 +27,7 @@ export function useCotizaciones(initialFilters: CotizacionFilters = {}) {
   try {
     const merged = { ...filtersRef.current, ...override };
     const result = await cotizacionService.getAll(merged);
-    setData(result);
+    setCotizaciones(result);
     setFilters(merged);
     return result;
   } catch (err) {
@@ -61,7 +61,7 @@ export function useCotizaciones(initialFilters: CotizacionFilters = {}) {
   }, [fetchCotizaciones]);
 
   return {
-    data,
+    cotizaciones,
     isLoading,
     error,
     filters,

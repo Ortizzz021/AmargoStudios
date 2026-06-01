@@ -9,7 +9,8 @@ import AnimateOnScroll from '@/components/ScrollAnimations';
 import { FormFieldInput, FormFieldSelect, FormFieldTextarea } from '@/components/FormField';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import PrivacyModal from '@/components/PrivacyModal';
-import { contactService, getErrorMessage } from '@/services/contactService';
+import { contactService } from '@/services/contactService';
+import { getErrorMessage } from '@/services/api';
 import { YOUTUBE_VIDEOS } from '@/lib/utils';
 
 const contactSchema = z.object({
