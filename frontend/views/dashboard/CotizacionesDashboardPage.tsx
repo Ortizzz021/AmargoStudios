@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
 import { useCotizaciones } from '@/hooks/useCotizaciones';
@@ -18,10 +18,14 @@ export default function CotizacionesDashboardPage() {
   const [estadoFilter, setEstadoFilter] = useState('');
   const [fechaDesde, setFechaDesde] = useState('');
   const [fechaHasta, setFechaHasta] = useState('');
+  const initializedRef = useRef(false);
 
   useEffect(() => {
-    void fetchCotizaciones({ page: 1, limit: 10 });
-  }, [fetchCotizaciones]);
+    if (!initializedRef.current) {
+      initializedRef.current = true;
+      void fetchCotizaciones({ page: 1, limit: 10 });
+    }
+  }, []);
 
   const assigneeOptions = useMemo(() => {
     const map = new Map<string, string>();

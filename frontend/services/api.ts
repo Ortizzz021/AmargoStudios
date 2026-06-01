@@ -20,6 +20,8 @@ export const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001/api/v1',
   headers: {
     'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache',
+    'Pragma': 'no-cache',
   },
 });
 
@@ -37,8 +39,8 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && typeof window !== 'undefined') {
       clearStoredToken();
       const path = window.location.pathname;
-      if (!path.startsWith('/login') && !path.startsWith('/register')) {
-        window.location.href = '/login';
+      if (!path.startsWith('/admin') && !path.startsWith('/register')) {
+        window.location.href = '/admin';
       }
     }
     return Promise.reject(error);

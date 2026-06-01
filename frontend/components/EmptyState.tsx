@@ -1,3 +1,5 @@
+import { Inbox } from 'lucide-react';
+
 interface EmptyStateProps {
   title: string;
   description?: string;
@@ -7,7 +9,9 @@ interface EmptyStateProps {
 export default function EmptyState({ title, description, action }: EmptyStateProps) {
   return (
     <div className="empty-state">
-      <div className="empty-state-icon">📭</div>
+      <div className="empty-state-icon">
+        <Inbox size={40} />
+      </div>
       <h3>{title}</h3>
       {description && <p>{description}</p>}
       {action}

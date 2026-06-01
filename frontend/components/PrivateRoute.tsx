@@ -15,7 +15,7 @@ export default function PrivateRoute({ children }: PrivateRouteProps) {
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
-      router.replace('/login');
+      router.replace('/admin');
     }
   }, [isAuthenticated, isLoading, router]);
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { clienteService, type ClienteFilters } from '@/services/clienteService';
 import { getErrorMessage } from '@/services/api';
 import type { Cliente, CreateClientePayload, PaginatedResponse, UpdateClientePayload } from '@/types';
@@ -10,24 +10,25 @@ export function useClientes(initialFilters: ClienteFilters = {}) {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<ClienteFilters>(initialFilters);
-
+  const filtersRef = useRef<ClienteFilters>(initialFilters);
+  
   const fetchClientes = useCallback(async (override?: ClienteFilters) => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const merged = { ...filters, ...override };
-      const result = await clienteService.getAll(merged);
-      setData(result);
-      setFilters(merged);
-      return result;
-    } catch (err) {
-      const message = getErrorMessage(err);
-      setError(message);
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
-  }, [filters]);
+  setIsLoading(true);
+  setError(null);
+  try {
+    const merged = { ...filtersRef.current, ...override };
+    const result = await clienteService.getAll(merged);
+    setData(result);
+    setFilters(merged);
+    return result;
+  } catch (err) {
+    const message = getErrorMessage(err);
+    setError(message);
+    throw err;
+  } finally {
+    setIsLoading(false);
+  }
+}, []);
 
   const createCliente = useCallback(async (payload: CreateClientePayload) => {
     const created = await clienteService.create(payload);

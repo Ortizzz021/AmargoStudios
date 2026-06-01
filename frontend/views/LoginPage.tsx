@@ -60,7 +60,7 @@ export default function LoginPage() {
   return (
     <section className="auth-page">
       <div className="auth-card">
-        <h1>Iniciar Sesión</h1>
+        <h1>Admin</h1>
         <p className="auth-subtitle">Accede al panel de administración de Amargo Studios</p>
         <form onSubmit={handleSubmit} noValidate>
           <FormFieldInput

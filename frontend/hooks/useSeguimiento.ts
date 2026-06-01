@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { seguimientoService } from '@/services/seguimientoService';
 import { getErrorMessage } from '@/services/api';
 import type { CreateSeguimientoPayload, Seguimiento } from '@/types';
@@ -9,22 +9,36 @@ export function useSeguimiento(clienteId?: string) {
   const [items, setItems] = useState<Seguimiento[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const fetchSeguimientos = useCallback(async (id?: string) => {
     const targetId = id ?? clienteId;
     if (!targetId) return [];
+    if (!isMountedRef.current) return [];
     setIsLoading(true);
     setError(null);
     try {
       const result = await seguimientoService.getByCliente(targetId);
-      setItems(result);
+      if (isMountedRef.current) {
+        setItems(result);
+      }
       return result;
     } catch (err) {
       const message = getErrorMessage(err);
-      setError(message);
+      if (isMountedRef.current) {
+        setError(message);
+      }
       throw err;
     } finally {
-      setIsLoading(false);
+      if (isMountedRef.current) {
+        setIsLoading(false);
+      }
     }
   }, [clienteId]);
 

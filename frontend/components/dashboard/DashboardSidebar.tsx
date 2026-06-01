@@ -2,13 +2,21 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { BarChart3, Users, ClipboardList, User } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 
+const iconMap: Record<string, React.ReactNode> = {
+  '/dashboard': <BarChart3 size={18} />,
+  '/dashboard/clientes': <Users size={18} />,
+  '/dashboard/cotizaciones': <ClipboardList size={18} />,
+  '/dashboard/perfil': <User size={18} />,
+};
+
 const links = [
-  { href: '/dashboard', label: 'Resumen', icon: '📊' },
-  { href: '/dashboard/clientes', label: 'Clientes', icon: '👥' },
-  { href: '/dashboard/cotizaciones', label: 'Cotizaciones', icon: '📋' },
-  { href: '/dashboard/perfil', label: 'Mi Perfil', icon: '👤' },
+  { href: '/dashboard', label: 'Resumen' },
+  { href: '/dashboard/clientes', label: 'Clientes' },
+  { href: '/dashboard/cotizaciones', label: 'Cotizaciones' },
+  { href: '/dashboard/perfil', label: 'Mi Perfil' },
 ];
 
 export default function DashboardSidebar() {
@@ -34,7 +42,7 @@ export default function DashboardSidebar() {
             href={link.href}
             className={`sidebar-link ${isActive(link.href) ? 'active' : ''}`}
           >
-            <span aria-hidden>{link.icon}</span>
+            <span aria-hidden className="sidebar-link-icon">{iconMap[link.href]}</span>
             {link.label}
           </Link>
         ))}
@@ -46,7 +54,7 @@ export default function DashboardSidebar() {
           className="btn btn-outline btn-sm"
           onClick={() => {
             logout();
-            window.location.href = '/login';
+            window.location.href = '/';
           }}
         >
           Cerrar sesión

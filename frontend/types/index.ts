@@ -107,6 +107,8 @@ export interface ContactPayload {
   telefono?: string;
   servicio: string;
   mensaje: string;
+  presupuesto_estimado?: number;
+  fecha_tentativa?: string;
 }
 
 export interface CreateClientePayload {
