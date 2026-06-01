@@ -6,7 +6,7 @@ import { getErrorMessage } from '@/services/api';
 import type { Cliente, CreateClientePayload, PaginatedResponse, UpdateClientePayload } from '@/types';
 
 export function useClientes(initialFilters: ClienteFilters = {}) {
-  const [data, setData] = useState<PaginatedResponse<Cliente> | null>(null);
+  const [clientes, setClientes] = useState<PaginatedResponse<Cliente> | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [filters, setFilters] = useState<ClienteFilters>(initialFilters);
@@ -18,7 +18,7 @@ export function useClientes(initialFilters: ClienteFilters = {}) {
   try {
     const merged = { ...filtersRef.current, ...override };
     const result = await clienteService.getAll(merged);
-    setData(result);
+    setClientes(result);
     setFilters(merged);
     return result;
   } catch (err) {
@@ -48,7 +48,7 @@ export function useClientes(initialFilters: ClienteFilters = {}) {
   }, [fetchClientes]);
 
   return {
-    data,
+    clientes,
     isLoading,
     error,
     filters,

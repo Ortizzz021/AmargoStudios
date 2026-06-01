@@ -14,7 +14,7 @@ import { formatDate, formatEstado } from '@/lib/utils';
 
 export default function CotizacionesDashboardPage() {
   const { user } = useAuth();
-  const { data, isLoading, error, filters, fetchCotizaciones, updateCotizacion } = useCotizaciones();
+  const { cotizaciones, isLoading, error, filters, fetchCotizaciones, updateCotizacion } = useCotizaciones();
   const [estadoFilter, setEstadoFilter] = useState('');
   const [fechaDesde, setFechaDesde] = useState('');
   const [fechaHasta, setFechaHasta] = useState('');
@@ -29,12 +29,12 @@ export default function CotizacionesDashboardPage() {
 
   const assigneeOptions = useMemo(() => {
     const map = new Map<string, string>();
-    data?.data.forEach((c) => {
+    cotizaciones?.data.forEach((c) => {
       if (c.perfil) map.set(c.perfil.id, c.perfil.nombre_completo);
     });
     if (user) map.set(user.id, user.nombre_completo);
     return Array.from(map.entries()).map(([id, name]) => ({ id, name }));
-  }, [data, user]);
+  }, [cotizaciones, user]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,11 +89,11 @@ export default function CotizacionesDashboardPage() {
 
       {isLoading && <LoadingSkeleton rows={5} />}
       {error && <ErrorMessage message={error} onRetry={() => void fetchCotizaciones()} />}
-      {!isLoading && !error && data?.data.length === 0 && (
+      {!isLoading && !error && cotizaciones?.data.length === 0 && (
         <EmptyState title="No hay cotizaciones" description="Las solicitudes del formulario de contacto aparecerán aquí." />
       )}
 
-      {!isLoading && !error && data && data.data.length > 0 && (
+      {!isLoading && !error && cotizaciones && cotizaciones.data.length > 0 && (
         <>
           <div className="table-wrapper">
             <table className="data-table">
@@ -108,7 +108,7 @@ export default function CotizacionesDashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {data.data.map((cot) => (
+                {cotizaciones.data.map((cot) => (
                   <tr key={cot.id}>
                     <td>{cot.cliente?.nombre_completo ?? '—'}</td>
                     <td>{cot.servicio}</td>
@@ -144,11 +144,11 @@ export default function CotizacionesDashboardPage() {
               </tbody>
             </table>
           </div>
-          {data.meta.totalPages > 1 && (
+          {cotizaciones.meta.totalPages > 1 && (
             <div className="pagination">
-              <button type="button" disabled={data.meta.page <= 1} onClick={() => changePage(data.meta.page - 1)}>Anterior</button>
-              <span>Página {data.meta.page} de {data.meta.totalPages}</span>
-              <button type="button" disabled={data.meta.page >= data.meta.totalPages} onClick={() => changePage(data.meta.page + 1)}>Siguiente</button>
+              <button type="button" disabled={cotizaciones.meta.page <= 1} onClick={() => changePage(cotizaciones.meta.page - 1)}>Anterior</button>
+              <span>Página {cotizaciones.meta.page} de {cotizaciones.meta.totalPages}</span>
+              <button type="button" disabled={cotizaciones.meta.page >= cotizaciones.meta.totalPages} onClick={() => changePage(cotizaciones.meta.page + 1)}>Siguiente</button>
             </div>
           )}
         </>

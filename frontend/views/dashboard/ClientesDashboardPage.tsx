@@ -14,7 +14,7 @@ import type { Cliente } from '@/types';
 const emptyForm = { nombre_completo: '', email: '', telefono: '', empresa: '' };
 
 export default function ClientesDashboardPage() {
-  const { data, isLoading, error, filters, fetchClientes, createCliente, updateCliente, deleteCliente } = useClientes();
+  const { clientes, isLoading, error, filters, fetchClientes, createCliente, updateCliente, deleteCliente } = useClientes();
   const [searchNombre, setSearchNombre] = useState('');
   const [searchEmpresa, setSearchEmpresa] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
@@ -128,11 +128,11 @@ export default function ClientesDashboardPage() {
 
       {isLoading && <LoadingSkeleton rows={5} />}
       {error && <ErrorMessage message={error} onRetry={() => void fetchClientes()} />}
-      {!isLoading && !error && data?.data.length === 0 && (
+      {!isLoading && !error && clientes?.data.length === 0 && (
         <EmptyState title="No hay clientes" description="Crea tu primer cliente para comenzar." action={<button type="button" className="btn btn-primary" onClick={openCreate}>Crear cliente</button>} />
       )}
 
-      {!isLoading && !error && data && data.data.length > 0 && (
+      {!isLoading && !error && clientes && clientes.data.length > 0 && (
         <>
           <div className="table-wrapper">
             <table className="data-table">
@@ -146,7 +146,7 @@ export default function ClientesDashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {data.data.map((cliente) => (
+                {clientes.data.map((cliente) => (
                   <tr key={cliente.id}>
                     <td>{cliente.nombre_completo}</td>
                     <td>{cliente.email}</td>
@@ -161,11 +161,11 @@ export default function ClientesDashboardPage() {
               </tbody>
             </table>
           </div>
-          {data.meta.totalPages > 1 && (
+          {clientes.meta.totalPages > 1 && (
             <div className="pagination">
-              <button type="button" disabled={data.meta.page <= 1} onClick={() => changePage(data.meta.page - 1)}>Anterior</button>
-              <span>Página {data.meta.page} de {data.meta.totalPages}</span>
-              <button type="button" disabled={data.meta.page >= data.meta.totalPages} onClick={() => changePage(data.meta.page + 1)}>Siguiente</button>
+              <button type="button" disabled={clientes.meta.page <= 1} onClick={() => changePage(clientes.meta.page - 1)}>Anterior</button>
+              <span>Página {clientes.meta.page} de {clientes.meta.totalPages}</span>
+              <button type="button" disabled={clientes.meta.page >= clientes.meta.totalPages} onClick={() => changePage(clientes.meta.page + 1)}>Siguiente</button>
             </div>
           )}
         </>
