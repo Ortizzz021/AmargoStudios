@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import HeroVideo from '@/components/HeroVideo';
 import AnimateOnScroll from '@/components/ScrollAnimations';
 import { FormFieldInput, FormFieldSelect, FormFieldTextarea } from '@/components/FormField';
+import { CheckCircle2, XCircle } from 'lucide-react';
 import PrivacyModal from '@/components/PrivacyModal';
 import { contactService, getErrorMessage } from '@/services/contactService';
 import { YOUTUBE_VIDEOS } from '@/lib/utils';
@@ -17,6 +18,8 @@ const contactSchema = z.object({
   telefono: z.string().optional(),
   servicio: z.string().min(1, 'Selecciona un servicio'),
   mensaje: z.string().min(10, 'Describe tu proyecto (mínimo 10 caracteres)'),
+  presupuesto_estimado: z.string().optional(),
+  fecha_tentativa: z.string().optional(),
   consent: z.literal(true, { message: 'Debes aceptar la política de datos' }),
 });
 
@@ -36,6 +39,8 @@ export default function ContactPage() {
     telefono: '',
     servicio: '',
     mensaje: '',
+    presupuesto_estimado: '',
+    fecha_tentativa: '',
     consent: false,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -76,10 +81,12 @@ export default function ContactPage() {
         telefono: form.telefono || undefined,
         servicio: form.servicio,
         mensaje: form.mensaje,
+        presupuesto_estimado: form.presupuesto_estimado ? Number(form.presupuesto_estimado) : undefined,
+        fecha_tentativa: form.fecha_tentativa || undefined,
       });
       setSuccess(true);
       toast.success('¡Solicitud enviada! Nos pondremos en contacto pronto.');
-      setForm({ nombre_completo: '', email: '', telefono: '', servicio: '', mensaje: '', consent: false });
+      setForm({ nombre_completo: '', email: '', telefono: '', servicio: '', mensaje: '', presupuesto_estimado: '', fecha_tentativa: '', consent: false });
     } catch (err) {
       const message = getErrorMessage(err, 'Hubo un error al enviar tu solicitud');
       toast.error(message);
@@ -108,13 +115,13 @@ export default function ContactPage() {
 
           {success && (
             <div className="form-message success show">
-              <span className="message-icon">✅</span>
+              <CheckCircle2 size={20} style={{ flexShrink: 0 }} />
               <span>¡Gracias por tu mensaje! Nos pondremos en contacto contigo pronto.</span>
             </div>
           )}
           {errors.form && (
             <div className="form-message error show">
-              <span className="message-icon">❌</span>
+              <XCircle size={20} style={{ flexShrink: 0 }} />
               <span>{errors.form}</span>
             </div>
           )}
@@ -154,6 +161,27 @@ export default function ContactPage() {
               options={serviceOptions}
               error={errors.servicio}
             />
+            <div className="form-row">
+              <FormFieldInput
+                label="Presupuesto Estimado"
+                name="presupuesto_estimado"
+                type="number"
+                value={form.presupuesto_estimado}
+                onChange={handleChange}
+                placeholder="$ 0.00"
+                error={errors.presupuesto_estimado}
+                min="0"
+                step="0.01"
+              />
+              <FormFieldInput
+                label="Fecha Tentativa"
+                name="fecha_tentativa"
+                type="date"
+                value={form.fecha_tentativa}
+                onChange={handleChange}
+                error={errors.fecha_tentativa}
+              />
+            </div>
             <FormFieldTextarea
               label="Cuéntanos sobre tu proyecto *"
               name="mensaje"

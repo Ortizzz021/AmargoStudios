@@ -117,7 +117,7 @@ export default function RegisterPage() {
           </button>
         </form>
         <p className="auth-footer">
-          ¿Ya tienes cuenta? <Link href="/login">Inicia sesión</Link>
+          ¿Ya tienes cuenta? <Link href="/admin">Inicia sesión</Link>
         </p>
       </div>
     </section>

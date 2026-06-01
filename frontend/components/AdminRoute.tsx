@@ -16,7 +16,7 @@ export default function AdminRoute({ children }: AdminRouteProps) {
   useEffect(() => {
     if (!isLoading) {
       if (!isAuthenticated) {
-        router.replace('/login');
+        router.replace('/admin');
       } else if (!isAdmin) {
         router.replace('/');
       }

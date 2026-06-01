@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Clapperboard, Camera, Smartphone } from 'lucide-react';
 import HeroVideo from '@/components/HeroVideo';
 import AnimateOnScroll from '@/components/ScrollAnimations';
 import { YOUTUBE_VIDEOS } from '@/lib/utils';
@@ -58,7 +59,7 @@ export default function HomePage() {
           <div className="grid grid-3">
             <div className="card">
               <div className="card-content">
-                <div className="card-icon">🎬</div>
+                <div className="card-icon"><Clapperboard size={28} /></div>
                 <h3>Producción de Video</h3>
                 <p>
                   Desde la preproducción hasta la postproducción. Guion, planificación, filmación,
@@ -68,7 +69,7 @@ export default function HomePage() {
             </div>
             <div className="card">
               <div className="card-content">
-                <div className="card-icon">📸</div>
+                <div className="card-icon"><Camera size={28} /></div>
                 <h3>Fotografía Profesional</h3>
                 <p>
                   Sesiones fotográficas profesionales para marcas, productos y contenido de redes sociales
@@ -78,7 +79,7 @@ export default function HomePage() {
             </div>
             <div className="card">
               <div className="card-content">
-                <div className="card-icon">📱</div>
+                <div className="card-icon"><Smartphone size={28} /></div>
                 <h3>Contenido para Redes</h3>
                 <p>
                   Videos cortos, reels y piezas visuales que resaltan en plataformas digitales con
@@ -104,21 +105,12 @@ export default function HomePage() {
           <div className="portfolio-grid">
             <div className="portfolio-item">
               <Image src="/images/jerless1.webp" alt="Campaña Jerless" width={500} height={400} style={{ objectFit: 'cover' }} loading="lazy" />
-              <div className="portfolio-overlay">
-                <p>Jerless - Campaña Cinematográfica</p>
-              </div>
             </div>
             <div className="portfolio-item">
               <Image src="/images/sprinterz.webp" alt="Comercial Sprinterz" width={500} height={400} style={{ objectFit: 'cover' }} loading="lazy" />
-              <div className="portfolio-overlay">
-                <p>Sprinterz - Comercial de Marca</p>
-              </div>
             </div>
             <div className="portfolio-item">
               <Image src="/images/fabian1.webp" alt="Proyecto Fabián" width={500} height={400} style={{ objectFit: 'cover' }} loading="lazy" />
-              <div className="portfolio-overlay">
-                <p>Fabián - Documental Corporativo</p>
-              </div>
             </div>
           </div>
         </AnimateOnScroll>

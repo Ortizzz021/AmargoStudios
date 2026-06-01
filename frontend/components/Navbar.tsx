@@ -68,14 +68,14 @@ export default function Navbar() {
             )}
             {isAuthenticated ? (
               <li>
-                <button type="button" className="nav-logout-btn" onClick={() => { logout(); window.location.href = '/login'; }}>
+                <button type="button" className="nav-logout-btn" onClick={() => { logout(); window.location.href = '/'; }}>
                   Salir
                 </button>
               </li>
             ) : (
               <li>
-                <Link href="/login" className={pathname === '/login' ? 'active' : ''}>
-                  Login
+                <Link href="/admin" className={pathname === '/admin' ? 'active' : ''}>
+                  Admin
                 </Link>
               </li>
             )}

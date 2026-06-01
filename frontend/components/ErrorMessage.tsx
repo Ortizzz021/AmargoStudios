@@ -1,3 +1,5 @@
+import { AlertTriangle } from 'lucide-react';
+
 interface ErrorMessageProps {
   message: string;
   onRetry?: () => void;
@@ -6,7 +8,7 @@ interface ErrorMessageProps {
 export default function ErrorMessage({ message, onRetry }: ErrorMessageProps) {
   return (
     <div className="error-message" role="alert">
-      <span className="message-icon">⚠️</span>
+      <AlertTriangle size={20} style={{ flexShrink: 0, marginTop: 2 }} />
       <div>
         <p>{message}</p>
         {onRetry && (

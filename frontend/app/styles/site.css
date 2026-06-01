@@ -73,6 +73,7 @@
 
 html {
     scroll-behavior: smooth;
+    color-scheme: dark;
 }
 
 body {
@@ -81,6 +82,9 @@ body {
     color: var(--color-text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
 }
 
 /* ============================================
@@ -488,7 +492,7 @@ section {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     padding: var(--spacing-lg);
-    transition: all var(--transition-base);
+    transition: all var(--transition-spring);
     position: relative;
     overflow: hidden;
 }
@@ -520,7 +524,7 @@ section {
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px) scale(1.01);
     box-shadow: var(--shadow-card), var(--shadow-glow);
     border-color: var(--color-border-hover);
 }
@@ -530,7 +534,9 @@ section {
 }
 
 .card:hover::after {
-    opacity: 0.6;
+    opacity: 0.8;
+    left: 10%;
+    right: 10%;
 }
 
 .card-content {
@@ -539,7 +545,6 @@ section {
 }
 
 .card-icon {
-    font-size: 2.5rem;
     margin-bottom: var(--spacing-md);
     width: 64px;
     height: 64px;
@@ -549,6 +554,14 @@ section {
     background: rgba(2, 89, 57, 0.12);
     border-radius: var(--radius-md);
     border: 1px solid rgba(2, 89, 57, 0.2);
+    color: var(--color-accent-light);
+    transition: all var(--transition-base);
+}
+
+.card:hover .card-icon {
+    background: rgba(2, 89, 57, 0.2);
+    border-color: var(--color-accent-light);
+    transform: scale(1.1);
 }
 
 .card h3 {
@@ -604,6 +617,8 @@ section {
     background: var(--gradient-primary);
     color: var(--color-text-primary);
     box-shadow: var(--shadow-md);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
 }
 
 /* Shimmer effect on hover */
@@ -621,11 +636,15 @@ section {
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    box-shadow: var(--shadow-lg), var(--shadow-glow), 0 0 40px rgba(2, 89, 57, 0.4);
 }
 
 .btn-primary:hover::before {
     left: 100%;
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
 }
 
 .btn-outline {
@@ -640,6 +659,10 @@ section {
     border-color: var(--color-accent-primary);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.btn-outline:active {
+    transform: translateY(0);
 }
 
 /* ============================================
@@ -687,7 +710,7 @@ section {
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .portfolio-item {
@@ -695,8 +718,10 @@ section {
     border-radius: var(--radius-lg);
     overflow: hidden;
     border: 1px solid var(--color-border);
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 2 / 3;
     cursor: pointer;
+    transition: all var(--transition-spring);
+    box-shadow: var(--shadow-md);
 }
 
 .portfolio-item img {
@@ -706,36 +731,36 @@ section {
     transition: transform var(--transition-slow);
 }
 
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 20%, rgba(13, 13, 13, 0.85) 100%);
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+    z-index: 1;
+    pointer-events: none;
+}
+
 .portfolio-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgba(13, 13, 13, 0.9) 100%);
-    display: flex;
-    align-items: flex-end;
-    padding: var(--spacing-md);
-    opacity: 0;
-    transition: opacity var(--transition-base);
-    z-index: 1;
+    z-index: 2;
+    pointer-events: none;
 }
 
-.portfolio-overlay p {
-    color: var(--color-text-primary);
-    font-weight: 600;
-    font-size: 1.1rem;
-    transform: translateY(10px);
-    transition: transform var(--transition-base);
+.portfolio-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--color-accent-primary);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.08);
+    transform: scale(1.12);
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-item:hover .portfolio-overlay p {
-    transform: translateY(0);
+.portfolio-item:hover::after {
+    opacity: 0.8;
 }
 
 /* ============================================
@@ -762,9 +787,27 @@ section {
 
 .about-content-index {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
     align-items: center;
+}
+
+.about-content-index .media-container {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    max-height: 500px;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+}
+
+.about-content-index .media-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.about-content-index .media-container:hover img {
+    transform: scale(1.05);
 }
 
 .about-content-about {
@@ -1065,14 +1108,24 @@ section {
 }
 
 .form-group select option {
-    background: #262626;
+    background: #1a1a1a;
     color: #F2F2F2;
     padding: 0.5rem;
+}
+
+.form-group select {
+    color-scheme: dark;
 }
 
 .form-group textarea {
     resize: vertical;
     min-height: 140px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
 }
 
 /* CONSENT CHECKBOX */
@@ -1166,8 +1219,7 @@ section {
     color: #f87171;
 }
 
-.form-message .message-icon {
-    font-size: 1.2rem;
+.form-message svg {
     flex-shrink: 0;
 }
 
@@ -1204,7 +1256,7 @@ section {
     border-radius: var(--radius-md);
     border: 1px solid rgba(2, 89, 57, 0.2);
     margin: 0 auto var(--spacing-md);
-    font-size: 1.5rem;
+    color: var(--color-accent-light);
 }
 
 /* ============================================
@@ -1327,9 +1379,9 @@ footer {
     border-top: 1px solid var(--color-border);
     margin-top: var(--spacing-2xl);
     position: relative;
+    padding: 0.75rem 0;
 }
 
-/* Decorative top line */
 footer::before {
     content: '';
     position: absolute;
@@ -1343,66 +1395,30 @@ footer::before {
 .footer-content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+    padding: 0 var(--spacing-lg);
 }
 
-.footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
-}
-
-.footer-brand p {
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
     color: var(--color-text-muted);
-    font-size: 0.9rem;
-    line-height: 1.7;
-    max-width: 300px;
 }
 
-.footer-brand .nav-logo {
-    margin-bottom: var(--spacing-sm);
-}
-
-.footer-col h4 {
-    color: var(--color-text-primary);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: var(--spacing-md);
-}
-
-.footer-col ul {
-    list-style: none;
-}
-
-.footer-col ul li {
-    margin-bottom: var(--spacing-xs);
-}
-
-.footer-col ul li a {
+.footer-link {
     color: var(--color-text-muted);
     text-decoration: none;
-    font-size: 0.9rem;
     transition: color var(--transition-fast);
 }
 
-.footer-col ul li a:hover {
+.footer-link:hover {
     color: var(--color-accent-light);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
-}
-
-.footer-bottom p {
-    color: var(--color-text-muted);
-    font-size: 0.8rem;
-    letter-spacing: 0.02em;
+.footer-separator {
+    color: rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
@@ -1585,10 +1601,8 @@ footer::before {
         transform: none;
     }
 
-    /* Footer */
-    .footer-top {
+    .form-row {
         grid-template-columns: 1fr;
-        gap: var(--spacing-md);
     }
 }
 
