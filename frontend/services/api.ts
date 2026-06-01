@@ -16,9 +16,9 @@ export const clearStoredToken = (): void => {
   localStorage.removeItem(TOKEN_KEY);
 };
 
-export const api = axios.create({
+export const api = axios.create({ 
   baseURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001/api/v1',
-  headers: {
+   headers: { 
     'Content-Type': 'application/json',
     'Cache-Control': 'no-cache',
     'Pragma': 'no-cache',
