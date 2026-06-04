@@ -797,6 +797,10 @@ section {
     border-radius: var(--radius-xl);
     max-height: 500px;
     box-shadow: var(--shadow-lg), var(--shadow-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .about-content-index .media-container img {
